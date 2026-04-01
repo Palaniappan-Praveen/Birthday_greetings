@@ -35,9 +35,9 @@ else:
             list_data=pd.read_csv('birthday.csv')
             records_new = list_data.to_dict(orient="records")
             list_of_data = pd.DataFrame(records_new)
-            name,email=birthday(list_of_data,day,month)
+            name,email_list=birthday(list_of_data,day,month)
             print(name)
-            if len(name) > 0 and len(email) > 0:
+            if len(name) > 0 and len(email_list) > 0:
                 letter_templates=['letter_1.txt','letter_2.txt','letter_3.txt']
                 picks_ran_letter=random.choice(letter_templates)
                 for names in name:
@@ -45,7 +45,7 @@ else:
                         content = f.read()
                         letter=content.replace("[NAME]",f"{names}")
                         print(letter)
-                    for email in email:
+                    for email in email_list:
                         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
                             connection.starttls()
                             connection.login(user=my_email, password=PASSWORD)
