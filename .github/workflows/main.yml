@@ -1,3 +1,5 @@
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 name: Daily Birthday Wisher
 
 on:
@@ -29,5 +31,4 @@ jobs:
         env:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
-          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
         run: python main.py
