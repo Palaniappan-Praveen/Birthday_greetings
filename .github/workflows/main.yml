@@ -1,5 +1,3 @@
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 name: Daily Birthday Wisher
 
 on:
@@ -25,10 +23,13 @@ jobs:
         run: |
           pip install pandas
 
-        
-
       - name: Execute Python script
         env:
           MY_EMAIL: ${{ secrets.MY_EMAIL }}
           MY_PASSWORD: ${{ secrets.MY_PASSWORD }}
-        run: python main.py
+        run: |
+          python main.py
+          if [ $? -ne 0 ]; then
+            exit 1
+          fi
+
