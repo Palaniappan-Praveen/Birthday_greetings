@@ -49,10 +49,9 @@ else:
                         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
                             connection.starttls()
                             connection.login(user=my_email, password=PASSWORD)
-                            connection.sendmail(from_addr=my_email, to_addrs=email,
-                                            msg="subject:birthday greetings\n\n "
-                                                f"{letter}")
-                            print(f"Email sent to {recipient_email}")
+                            message = f"Subject: birthday greetings\n\n{letter}"
+                            connection.sendmail(from_addr=my_email, to_addrs=email, msg=message)
+                            print(f"Email sent to {email}")
     except Exception as e:
         print(f"An error occurred: {e}")
         raise
