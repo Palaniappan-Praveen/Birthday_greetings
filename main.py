@@ -48,7 +48,7 @@ else:
                     for email in email_list:
                         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
                             connection.starttls()
-                            connection.login(user=my_email, password=PASSWORD)
+                            connection.login(user=my_email, password=PASSWORD.encode('utf-8'))
                             message = f"Subject: birthday greetings\n\n{letter}"
                             connection.sendmail(from_addr=my_email, to_addrs=email, msg=message)
                             print(f"Email sent to {email}")
