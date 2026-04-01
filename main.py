@@ -9,8 +9,10 @@ month = now.month
 day = now.day
 #print(day)
 #print(month)
-my_email = str(os.getenv("MY_EMAIL"))
-PASSWORD = str(os.getenv("MY_PASSWORD"))
+my_email = os.getenv("MY_EMAIL")
+PASSWORD = os.getenv("MY_PASSWORD")
+if not my_email or not PASSWORD:
+    raise ValueError("MY_EMAIL and MY_PASSWORD environment variables must be set")
 def birthday(lists_of_data,today,this_month):
     listname = [First_name for First_name, days, months in zip(lists_of_data.name, lists_of_data.day, lists_of_data.month)
                 if days == today and months == this_month
